@@ -1,22 +1,23 @@
 import { IncomingMessage, ServerResponse } from "http";
 
-export const getListEpisodies = async (request: IncomingMessage, response: ServerResponse) => {
-    response.writeHead(200, {"Content-Type": "application/json"});
-    response.end(JSON.stringify(
-        [
-            {
-                videoID: "tqybzmT22ng",
-                podcastName: "PodFlow",
-                episode: "PODEROSÍSSIMO NINJA - Podpah #01",
-                categories: ["humor", "conhecimento"]
-            },
-            {
-                videoID: "7pcRt9ysxsw",
-                podcastName: "Podpah",
-                episode: "MAUMAU & JULIO BALESTRIN - Podpah [#856]",
-                categories: ["humor", "conhecimento", "batepapo"]
-            }
-        ]
+import { serviceListEpisodies } from "../services/listEpisodiesService"
+import { serviceFilterEpisodies } from "../services/filterEpisodiesService";
+import { StatusCode } from "../utils/statusCode";
 
-    ));
+
+export const getListEpisodies = async (request: IncomingMessage, response: ServerResponse) => {
+
+    const content = await serviceListEpisodies()
+
+    response.writeHead(StatusCode.OK, {"Content-Type": "application/json"});
+    response.end(JSON.stringify(content))
 };
+
+
+export const getFilterEpisodies = async (request: IncomingMessage, response: ServerResponse) => {
+
+    const content = await serviceFilterEpisodies(request.url)
+
+    response.writeHead(StatusCode.OK, {"Content-Type": "application/json"});
+    response.end(JSON.stringify(content))
+}
