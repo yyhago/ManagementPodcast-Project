@@ -1,58 +1,52 @@
 # ManagementPodcast 🎙️📺
 
 ## Descrição
-ManagementPodcast é uma aplicação inovadora projetada para organizar e gerenciar episódios de podcasts em vídeo, semelhante à experiência de navegação da Netflix. O projeto permite aos usuários explorar e filtrar podcasts de forma intuitiva e categórica.
+ManagementPodcast é uma API RESTful para gerenciamento e consulta de episódios de podcasts, oferecendo funcionalidades de listagem e filtragem.
 
 ## 🎯 Objetivo
-Desenvolver uma plataforma que separe episódios de podcasts por categorias, proporcionando uma visualização organizada e facilitando a descoberta de novos conteúdos.
+Criar uma API robusta para organização e consulta de episódios de podcasts, permitindo filtros precisos e recuperação de informações.
+
+## 🖼️ Screenshots
+
+![Postman Filter](/pictureScreen/Filter.png)
+![Postman List](/pictureScreen/List.png)
 
 ## ✨ Funcionalidades Principais
-- **Categorização de Podcasts**: Organize episódios em categorias como Saúde, Fisiculturismo, Jogos, Humor
-- **Filtro por Podcast**: Busque e explore episódios de podcasts específicos
-- **Visualização Organizada**: Interface inspirada em plataformas de streaming
+- Listagem completa de episódios
+- Filtro por nome de podcast
+- Categorização de podcasts
 
-## 🚀 Arquitetura de Dados
-### Estrutura de Dados do Episódio
-```json
-{
-    "videoID": "string",
-    "podcastName": "string", 
-    "episode": "string",
-    "coverImage": "URL",
-    "link": "URL",
-    "categories": ["string"]
+## 🚀 Estrutura de Dados
+```typescript
+interface PodcastModel {
+    videoID: string;
+    podcastName: string; 
+    episode: string;
+    coverImage: string;
+    link: string;
+    categories: string[];
 }
 ```
 
-## 🔍 Implementação das Features
-### 1. Listagem de Episódios por Categoria
-- Retorna episódios agrupados por categorias
-- Exemplo de categorias: Humor, Conhecimento, Bate-papo
+## 🔍 Endpoints
+- `GET /api/list`: Retorna todos os episódios
+- `GET /api/episode?p=NomePodcast`: Filtra episódios por nome de podcast
 
-### 2. Filtro por Nome de Podcast
-- Busca e exibe todos os episódios de um podcast específico
-- Retorna informações detalhadas do podcast e seus episódios
+## 🛠️ Tecnologias
+- TypeScript
+- Node.js
+- Arquitetura REST
 
-## 📋 Próximos Passos
-- Desenvolvimento da interface de usuário
-- Implementação da lógica de categorização
-- Criação de API para gerenciamento de dados
-- Testes de funcionalidade
+## 📦 Instalação
+1. Clone o repositório
+2. Instale as dependências: `npm install`
+3. Inicie o servidor: `npm start`
 
-## 🛠️ Tecnologias Planejadas
-- Backend: (a definir)
-- Frontend: (a definir)
-- API: REST
+## 📋 Configuração
+- Defina a porta no arquivo `.env`
+- Configure as variáveis de ambiente necessárias
 
-## 📦 Como Rodar o Projeto
-*(Instruções serão adicionadas após o desenvolvimento inicial)*
 
 ## 🤝 Contribuições
-Contribuições são bem-vindas! Por favor, leia as diretrizes de contribuição antes de submeter pull requests.
-
-## 📄 Licença
-*(Licença a ser definida)*
-
----
-
-*Projeto em desenvolvimento*
+Contribuições são bem-vindas. Por favor, abra uma issue ou envie um pull request.
+```
